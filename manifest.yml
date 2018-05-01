@@ -1,0 +1,8 @@
+---
+applications:
+- name: cgsizzlers2018
+  memory: 512M
+  instances: 1
+  random-route: false
+  Exclude: 
+    - node_modules/
