@@ -12,5 +12,26 @@
     "auth": {
         "secret": "secret",
         "ttl": 3600
+    },
+    "orgs":{
+        "aaa" : {
+            "actions" :[
+                {
+                    "action": "orgbot.my.leaves",
+                    "source": "api",
+                    "url": "/leaves.json"
+                },
+                {
+                    "action": "orgbot.holidays",
+                    "source": "db",
+                    "url": "/leaves.json"
+                }
+            ]
+        }
+
+        
+
     }
+
+    
 }

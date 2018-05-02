@@ -38,3 +38,7 @@ app.get('/', function(req, res){
 app.listen(config.app.port, function(){
     console.log("Application started on port: "+ config.app.port);
 });
+
+/*app.listen(process.env.port, function(){
+    console.log("Application started on port: "+ process.env.port);
+});*/

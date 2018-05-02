@@ -18,5 +18,13 @@ router.get('/testjson', function(req, res, next){
   controller.testjson(req, res, next);
 })
 
+router.post('/login', function(req, res, next){
+  controller.login(req, res, next);
+});
+
+router.post('/fullfilment', function(req, res, next){
+  controller.fullfilment(req, res, next);
+});
+
 module.exports = router;
 
