@@ -19,6 +19,8 @@
     "express-session": "^1.15.6",
     "express-winston": "^2.5.1",
     "firebase": "^4.13.1",
+    "firebase-admin": "^5.12.0",
+    "firebase-nodejs": "^1.0.1-1.1",
     "generic-pool": "^3.4.2",
     "jsonwebtoken": "^8.2.1",
     "lodash": "^4.17.10",

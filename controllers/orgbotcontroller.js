@@ -28,7 +28,10 @@ module.exports = {
     },
 
     login: function(req, res, next){
-        res.status(200).json(responsedata);
+		fbService.getData('/login/users/',function(resp){
+		responsedata.data = resp;
+	    res.status(200).json(responsedata);
+		});
     },
 
     fullfilment: function (req, res, next){
