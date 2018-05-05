@@ -3,6 +3,7 @@ var _ = require('lodash');
 var util = require(rootdir+'/utils/util.js');
 var fileService = require(rootdir+'/services/fileservice.js');
 var fbService = require(rootdir+'/services/firebaseservice.js');
+var restClientService = require(rootdir+'/services/restclientservice.js');
 
 var responsepay = {
     payload:{
@@ -42,6 +43,12 @@ module.exports = {
         if(actionData.length > 0){
             var data = actionData[0];
             if(data.source === 'api'){
+                restClientService.getApiData(data.url, function(response){
+                    responsepay.payload = response;
+                    res.status(200).json(responsepay);
+                })
+            }
+            if(data.source === 'local'){
                 fileService.getJsonData(data.url, function(jsonResponse){
                     responsepay.payload = jsonResponse;
                     res.status(200).json(responsepay);
