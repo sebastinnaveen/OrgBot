@@ -29,8 +29,8 @@ module.exports = {
     },
 	processApiData: function(response,queryText){
 	
-		if(queryText!='' && queryText.toLowerCase()==='project')
-		{
+		if(queryText!='' && queryText.toLowerCase()==='project'){
+			console.log(response);
 			var jsonData = response
 			if(jsonData.length > 0){
 				var jsonArray =[];
@@ -47,7 +47,7 @@ module.exports = {
 				responseListData.payload = jsonArray;
 			}
 			
-			return responsedata;
+			return responseListData;
 		}
 		
 		
