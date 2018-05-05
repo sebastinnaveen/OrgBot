@@ -26,6 +26,11 @@
                     "source": "local",
                     "url": "/leaves.json"
                 },
+				{
+                    "action": "orgbot.employee",
+                    "source": "local",
+                    "url": "/emp.json"
+                },
                 {
                     "action": "orgbot.holidays",
                     "source": "db",
