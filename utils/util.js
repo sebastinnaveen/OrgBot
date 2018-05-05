@@ -1,22 +1,13 @@
 var _ = require('lodash');
 
-var responseCardData = {
-	display:"Card",
-    payload: {
-        message: 'I am a bot'
-    }
-}
-var responseSimpleData = {
-	display:"Plain",
-    payload: {
-        message: 'I am a bot'
-    }
-}
-var responseListData = {
-	display:"List",
-    payload: {
-        message: 'I am a bot'
-    }
+var responseData= {
+	payload : {
+		displaytype: '',
+		message: '',
+		data :{
+			
+		}
+	}
 }
 
 module.exports = {
@@ -27,7 +18,13 @@ module.exports = {
 
         return result;
     },
-	processApiData: function(response,queryText){
+	getUserDetails : function(users, username){
+		var result = _.filter(users, function(data){
+            return data.username.toLowerCase() === username.toLowerCase();
+        })
+		return result;
+	},
+	processApiData: function(response,queryText,actionData){
 	
 		if(queryText!='' && queryText.toLowerCase()==='project'){
 			console.log(response);
@@ -44,21 +41,30 @@ module.exports = {
 						jsonArray.push(tickets);
 					}
 				
-				responseListData.payload = jsonArray;
+				responseData.payload.data = jsonArray;
+				responseData.payload.displaytype = actionData.displaytype;
+				responseData.payload.message = actionData.message;
 			}
 			
-			return responseListData;
+			return responseData;
 		}
 		
 		
 	},
-	processDbData: function(response,queryText){
-		responseListData.payload = response;	
-		return responseListData;
+	processDbData: function(response,queryText,actionData){
+		
+				responseData.payload.data = response;
+				responseData.payload.displaytype = actionData.displaytype;
+				responseData.payload.message = actionData.message;
+		
+		return responseData;
 	},
-	processData: function(response,queryText){
-		responseListData.payload = response;
-		return responseListData;
+	processData: function(response,queryText,actionData){
+		responseData.payload.data = response;
+		responseData.payload.displaytype = actionData.displaytype;
+		responseData.payload.message = actionData.message;
+		
+		return responseData;
 	}
 	
 }

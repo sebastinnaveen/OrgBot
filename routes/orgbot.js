@@ -17,7 +17,7 @@ router.get('/testjson', function(req, res, next){
   controller.testjson(req, res, next);
 })
 
-router.get('/login', function(req, res, next){
+router.post('/login', function(req, res, next){
   controller.login(req, res, next);
 });
 

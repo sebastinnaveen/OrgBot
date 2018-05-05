@@ -29,35 +29,15 @@ module.exports = {
     },
 
     login: function(req, res, next){
-		var options = {  
-				url: 'http://api.github.com/repos/sebastinnaveen/OrgBot/issues',
-				auth: {
-					username: 'sebastinnaveen',
-					password: 'naveenv@82'
-				},
-				headers: {
-					'User-Agent': 'Web/2.0',
-					'Accept': 'application/json'
-				}
-			};
-		restClientService.getApiData(options,function(resp){
-		var jsonData = JSON.parse(resp.body);	
+		var username = req.body.users.username;
+		fbService.getData('/login/users/', function(jsonResponse){
+			var result = util.getUserDetails(jsonResponse, username);
+				    
+            res.status(200).json(result);
+				
+        });
+	   
 		
-		var jsonArray =[];
-		for(var i=0;i<jsonData.length;i++)
-		{
-			var tickets={
-				"title":jsonData[i].title,
-				"issueId":jsonData[i].number
-				}
-						
-			jsonArray.push(tickets);
-		}
-		responsedata.data = jsonData;
-		console.log(jsonArray);
-		console.log(jsonData[0].title);
-	    res.status(200).json(jsonData);
-		});
     },
 
     fullfilment: function (req, res, next){
@@ -70,18 +50,18 @@ module.exports = {
             var data = actionData[0];
             if(data.source === 'api'){
                 restClientService.getRestApi(data.url, data.options,function(response){
-					var responsePayload = util.processApiData(response,queryText);
+					var responsePayload = util.processApiData(response,queryText,data);
 					res.status(200).json(responsePayload);
                 })
             }
             else if(data.source === 'local'){
                 fileService.getJsonData(data.url, function(jsonResponse){
-					var responsePayload = util.processData(jsonResponse,queryText);
+					var responsePayload = util.processData(jsonResponse,queryText,data);
 					res.status(200).json(responsePayload);
                 });
             } else if (data.source === 'db'){
                 fbService.getData(data.url, function(jsonResponse){
-				    var responsePayload = util.processDbData(jsonResponse,queryText)
+				    var responsePayload = util.processDbData(jsonResponse,queryText,data)
                     res.status(200).json(responsePayload);
 				
                 });

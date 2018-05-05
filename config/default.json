@@ -19,22 +19,31 @@
                 {
                     "action": "orgbot.deploy",
                     "source": "api",
-                    "url": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+                    "url": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
+					"displaytype":"Plain",
+					"message":"Your project deployed"
+					
                 },
                 {
                     "action": "orgbot.leaves",
                     "source": "local",
-                    "url": "/leaves.json"
+                    "url": "/leaves.json",
+					"type" : "List",
+					"message":"Here is your leave details"
                 },
 				{
                     "action": "orgbot.employee",
                     "source": "local",
-                    "url": "/emp.json"
+                    "url": "/emp.json",
+					"type" : "Card",
+					"message":"Here is your employee details"
                 },
                 {
                     "action": "orgbot.holidays",
                     "source": "db",
-                    "url": "/holidays/2018"
+                    "url": "/holidays/2018",
+					"type" : "List",
+					"message":"Here is your holiday list"
                 },
 				{
 					"action": "orgbot.tickets",
@@ -49,7 +58,9 @@
 								"User-Agent": "Web/2.0",
 								"Accept": "application/json"
 								}
-						}
+						},
+					"type" : "Card",
+					"message":"Here is your leave details"
 				}
             ]
         }

@@ -17,17 +17,54 @@
         "aaa" : {
             "actions" :[
                 {
-                    "action": "orgbot.my.leaves",
+                    "action": "orgbot.deploy",
                     "source": "api",
-                    "url": "/leaves.json"
+                    "url": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
+					"displaytype":"Plain",
+					"message":"Your project deployed"
+					
+                },
+                {
+                    "action": "orgbot.leaves",
+                    "source": "local",
+                    "url": "/leaves.json",
+					"type" : "List",
+					"message":"Here is your leave details"
+                },
+				{
+                    "action": "orgbot.employee",
+                    "source": "local",
+                    "url": "/emp.json",
+					"type" : "Card",
+					"message":"Here is your employee details"
                 },
                 {
                     "action": "orgbot.holidays",
                     "source": "db",
-                    "url": "/leaves.json"
-                }
+                    "url": "/holidays/2018",
+					"type" : "List",
+					"message":"Here is your holiday list"
+                },
+				{
+					"action": "orgbot.tickets",
+                    "source": "api",
+					"url":"http://api.github.com/repos/sebastinnaveen/OrgBot/issues",
+                    "options": {  
+						"auth": {
+								"username": "sebastinnaveen",
+								"password": "naveenv@82"
+							  },
+						"headers": {
+								"User-Agent": "Web/2.0",
+								"Accept": "application/json"
+								}
+						},
+					"type" : "Card",
+					"message":"Here is your leave details"
+				}
             ]
         }
+        
 
     }
 
