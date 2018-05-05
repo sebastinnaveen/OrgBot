@@ -17,8 +17,13 @@
         "aaa" : {
             "actions" :[
                 {
-                    "action": "orgbot.my.leaves",
+                    "action": "orgbot.deploy",
                     "source": "api",
+                    "url": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+                },
+                {
+                    "action": "orgbot.leaves",
+                    "source": "local",
                     "url": "/leaves.json"
                 },
                 {
