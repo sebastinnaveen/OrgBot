@@ -28,27 +28,31 @@
                     "action": "orgbot.leaves",
                     "source": "local",
                     "url": "/leaves.json",
-					"type" : "List",
+					"displaytype" : "List",
 					"message":"Here is your leave details"
                 },
 				{
                     "action": "orgbot.employee",
                     "source": "local",
                     "url": "/emp.json",
-					"type" : "Card",
+					"displaytype" : "Card",
 					"message":"Here is your employee details"
                 },
                 {
                     "action": "orgbot.holidays",
                     "source": "db",
                     "url": "/holidays/2018",
-					"type" : "List",
+					"displaytype" : "List",
 					"message":"Here is your holiday list"
                 },
 				{
 					"action": "orgbot.tickets",
                     "source": "api",
 					"url":"http://api.github.com/repos/sebastinnaveen/OrgBot/issues",
+					"urls":{
+							"project":"http://api.github.com/repos/sebastinnaveen/OrgBot/issues",
+							"incident":""
+						   },
                     "options": {  
 						"auth": {
 								"username": "sebastinnaveen",
@@ -59,8 +63,8 @@
 								"Accept": "application/json"
 								}
 						},
-					"type" : "Card",
-					"message":"Here is your leave details"
+					"displaytype" : "Card",
+					"message":"Here is your ticket details"
 				}
             ]
         }
