@@ -1,15 +1,30 @@
-const axios = require('axios');
+const request = require('request');
+const reqp= require('request-promise');
+var Client = require('node-rest-client').Client;
 
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+var client = new Client();
+
 module.exports = {
     getApiData: function(url, callback) {
-        axios.get(url)
-            .then(response => {
-                callback(response.data);
-        })
-        .catch(error => {
-            
-            callback(error);
-        });
-    }
+        request.get(url,function(error,response,body){
+          callback(response);
+         
+    })
+	},
+	getApiDataPromise: function(url, callback) {
+        reqp.get(url).then(function(response){
+       
+                callback(response);
+        
+    })
+	.catch(function(err){
+		callback(err)
+	})
+   },
+   getRestApi: function(url,args,callback){
+		client.get(url, args,function (data, response) {
+        callback(data);
+    });
+   }
 }
+

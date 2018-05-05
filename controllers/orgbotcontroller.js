@@ -29,34 +29,61 @@ module.exports = {
     },
 
     login: function(req, res, next){
-		fbService.getData('/login/users/',function(resp){
-		responsedata.data = resp;
-	    res.status(200).json(responsedata);
+		var options = {  
+				url: 'http://api.github.com/repos/sebastinnaveen/OrgBot/issues',
+				auth: {
+					username: 'sebastinnaveen',
+					password: 'naveenv@82'
+				},
+				headers: {
+					'User-Agent': 'Web/2.0',
+					'Accept': 'application/json'
+				}
+			};
+		restClientService.getApiData(options,function(resp){
+		var jsonData = JSON.parse(resp.body);	
+		
+		var jsonArray =[];
+		for(var i=0;i<jsonData.length;i++)
+		{
+			var tickets={
+				"title":jsonData[i].title,
+				"issueId":jsonData[i].number
+				}
+						
+			jsonArray.push(tickets);
+		}
+		responsedata.data = jsonData;
+		console.log(jsonArray);
+		console.log(jsonData[0].title);
+	    res.status(200).json(jsonData);
 		});
     },
 
     fullfilment: function (req, res, next){
         var action = req.body.queryResult.action || '';
+		var queryText = req.body.queryResult.queryText || '';
         console.log(action);
         var actionData = util.getActionConfig(action);
         console.log(actionData);
         if(actionData.length > 0){
             var data = actionData[0];
             if(data.source === 'api'){
-                restClientService.getApiData(data.url, function(response){
-                    responsepay.payload = response;
-                    res.status(200).json(responsepay);
+                restClientService.getRestApi(data.url, data.options,function(response){
+					var responsePayload = util.processApiData(response,queryText);
+					res.status(200).json(responsePayload);
                 })
             }
-            if(data.source === 'local'){
+            else if(data.source === 'local'){
                 fileService.getJsonData(data.url, function(jsonResponse){
-                    responsepay.payload = jsonResponse;
-                    res.status(200).json(responsepay);
+					var responsePayload = util.processData(jsonResponse,queryText);
+					res.status(200).json(responsePayload);
                 });
             } else if (data.source === 'db'){
-                fbService.getFBData(data.url, function(jsonResponse){
-                    responsepay.payload = jsonResponse;
-                    res.status(200).json(responsepay);
+                fbService.getData(data.url, function(jsonResponse){
+				    var responsePayload = util.processDbData(jsonResponse,queryText)
+                    res.status(200).json(responsePayload);
+				
                 });
             } else{
                 res.status(200).json(responsepay);
