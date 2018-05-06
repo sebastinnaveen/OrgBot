@@ -44,28 +44,8 @@
                     "url": "/holidays/2018",
 					"displaytype" : "List",
 					"message":"Here is your holiday list"
-                },
-				{
-					"action": "orgbot.tickets",
-                    "source": "api",
-					"url":"http://api.github.com/repos/sebastinnaveen/OrgBot/issues",
-					"urls":{
-							"project":"http://api.github.com/repos/sebastinnaveen/OrgBot/issues",
-							"incident":""
-						   },
-                    "options": {  
-						"auth": {
-								"username": "sebastinnaveen",
-								"password": "naveenv@82"
-							  },
-						"headers": {
-								"User-Agent": "Web/2.0",
-								"Accept": "application/json"
-								}
-						},
-					"displaytype" : "Card",
-					"message":"Here is your ticket details"
-				}
+                } 
+				
             ]
         }
         
