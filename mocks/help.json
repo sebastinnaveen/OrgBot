@@ -1,0 +1,26 @@
+{
+"display":"List",
+"payload":[
+			{
+				"name":"Employee Look up",
+				"title":"Whos <Employee name>"
+			},
+			{
+				"name":"Leave balance",
+				"title":"Get my leave balance / my leave"
+			},
+			{
+				"name":"Holidays",
+				"title":"Holidays"
+			},
+			{
+				"name":"Tickets",
+				"title":"Get my tickets"
+			},
+			{
+				"name":"Deploy projets",
+				"title":"Deploy <Project name>"
+			}
+			
+		 ]
+}

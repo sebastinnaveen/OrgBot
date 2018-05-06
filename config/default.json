@@ -44,7 +44,14 @@
                     "url": "/holidays/2018",
 					"displaytype" : "List",
 					"message":"Here is your holiday list"
-                }
+                },
+				{
+                    "action": "orgbot.help",
+                    "source": "local",
+                    "url": "/help.json",
+					"displaytype" : "List",
+					"message":"OrgBot help"
+                }				
 				
             ]
         }
