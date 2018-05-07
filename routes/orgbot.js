@@ -21,6 +21,10 @@ router.post('/login', function(req, res, next){
   controller.login(req, res, next);
 });
 
+router.post('/nlp', function(req, res, next){
+  controller.handleTextRequest(req, res, next);
+});
+
 router.post('/fullfilment', function(req, res, next){
   controller.fullfilment(req, res, next);
 });

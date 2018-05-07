@@ -4,6 +4,7 @@ var util = require(rootdir+'/utils/util.js');
 var fileService = require(rootdir+'/services/fileservice.js');
 var fbService = require(rootdir+'/services/firebaseservice.js');
 var restClientService = require(rootdir+'/services/restclientservice.js');
+var dfService = require(rootdir+'/services/dialogflowservice.js');
 
 var responsepay = {
     payload:{
@@ -35,6 +36,17 @@ module.exports = {
 				    
             res.status(200).json(result);
 				
+        });
+	   
+		
+    },
+    handleTextRequest: function(req, res, next){
+       dfService.dfTextRequest(req.body, function(dfResponse){
+            if(dfResponse.success){
+                res.status(200).json(dfResponse);
+            }else{
+                res.status(400).json(dfResponse);
+            }
         });
 	   
 		
