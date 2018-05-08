@@ -33,7 +33,7 @@
                     "action": "orgbot.leaves",
                     "source": "local",
                     "url": "/leaves.json",
-					"displaytype" : "List",
+					"displaytype" : "Card",
 					"message":"Here is your leave details"
                 },
 				{
