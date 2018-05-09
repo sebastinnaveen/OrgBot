@@ -56,7 +56,22 @@
                     "url": "/help.json",
 					"displaytype" : "List",
 					"message":"OrgBot help"
-                }				
+                },
+				{
+					"action": "orgbot.tickets",
+                    "source": "api",
+					"url":"http://api.github.com/repos/sebastinnaveen/OrgBot/issues",
+                    "options": {  
+						"auth": {
+								"username": "sebastinnaveen",
+								"password": "naveenv@82"
+							  },
+						"headers": {
+								"User-Agent": "Web/2.0",
+								"Accept": "application/json"
+								}
+						}
+				}				
 				
             ]
         }
