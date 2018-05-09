@@ -61,6 +61,8 @@
 					"action": "orgbot.tickets",
                     "source": "api",
 					"url":"http://api.github.com/repos/sebastinnaveen/OrgBot/issues",
+					"displaytype" : "List",
+					"message":"Here is your ticket details",
                     "options": {  
 						"auth": {
 								"username": "sebastinnaveen",
