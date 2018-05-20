@@ -5,6 +5,8 @@ var fileService = require(rootdir+'/services/fileservice.js');
 var fbService = require(rootdir+'/services/firebaseservice.js');
 var restClientService = require(rootdir+'/services/restclientservice.js');
 var dfService = require(rootdir+'/services/dialogflowservice.js');
+var jenkins = require(rootdir+'/services/jenkins.js');
+
 
 var responsepay = {
     payload:{
@@ -77,7 +79,17 @@ module.exports = {
                     res.status(200).json(responsePayload);
 				
                 });
-            } else{
+            }else if (data.source === 'trigger'){
+                
+				    jenkins.triggerJenkins(data.url,data.jobname,data.token, function(jsonResponse){
+				    var responsePayload = util.processData(jsonResponse,queryText,data)
+                    res.status(200).json(responsePayload);
+				
+                });
+				
+                
+            }
+			else{
                 res.status(200).json(responsepay);
             }
         } else{

@@ -1,5 +1,6 @@
 var _ = require('lodash');
 
+
 var responseData= {
 	payload : {
 		displaytype: '',
@@ -66,5 +67,6 @@ module.exports = {
 		
 		return responseData;
 	}
+	
 	
 }

@@ -23,10 +23,12 @@
             "actions" :[
                 {
                     "action": "orgbot.deploy",
-                    "source": "api",
-                    "url": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
+                    "source": "trigger",
+                    "url": "http://sizzlers-devops.dlinkddns.com:8080/",
 					"displaytype":"Plain",
-					"message":"Your project deployed"
+					"message":"Your project deployed",
+					"token":"uat",
+					"jobname":"jenkins.test"
 					
                 },
                 {
