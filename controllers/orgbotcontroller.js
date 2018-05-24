@@ -82,6 +82,7 @@ module.exports = {
             }else if (data.source === 'trigger'){
                 
 				    jenkins.triggerJenkins(data.url,data.jobname,data.token, function(jsonResponse){
+                                    console.log(jsonResponse)
 				    var responsePayload = util.processData(jsonResponse,queryText,data)
                     res.status(200).json(responsePayload);
 				
